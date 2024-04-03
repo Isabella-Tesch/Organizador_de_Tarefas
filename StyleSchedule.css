@@ -1,6 +1,12 @@
 #ItemMenuArquivo {
     font-family: 'Courier New', Courier, monospace;
     font-size: 15pt;
-    color: blueviolet
+    font-weight: bold;
 }
 
+#k{
+    font-weight: bolder;
+    font-size: 22px;
+    font-family:'Courier New', Courier, monospace;
+    text-decoration: underline;
+}
