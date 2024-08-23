@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QLabel, QCalendarWidget, QTableWidget, QHeaderView, QTableWidgetItem
+import os
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -92,8 +93,7 @@ class MainWindow(QMainWindow):
         NameMonth = self.getNameMonth(Month)
 
         self.label.setObjectName('k')
-        self.applyStylesheet(self.label, 'Organizador_de_Tarefas/StyleSchedule.css')
-
+        self.applyStylesheet(self.label, 'Organizador_de_Tarefas\StyleSchedule.css')
         
         previous_dates = [SelectDate.addDays(-i) for i in range(3, 0, -1)]
 
@@ -108,11 +108,20 @@ class MainWindow(QMainWindow):
     def Schedule(self):
         print('oi')
     
-    def applyStylesheet(self, widget, filename):
-        with open(filename, "r") as f:
-            widget.setStyleSheet(f.read())
-        
+    def applyStylesheet(self, widget, filename="assets/StyleSchedule.css"):
+        try:
+            # Obtém o diretório onde o script está localizado
+            base_dir = os.path.dirname(os.path.abspath(__file__))
 
+            # Constrói o caminho absoluto para o arquivo CSS
+            filepath = os.path.join(base_dir, filename)
+            
+            with open(filepath, "r") as f:
+                widget.setStyleSheet(f.read())
+        except FileNotFoundError:
+            print(f"Arquivo {filepath} não encontrado.")
+        except Exception as e:
+            print(f"Ocorreu um erro ao abrir o arquivo: {e}")
 
 def Main():
     app = QApplication(sys.argv)
