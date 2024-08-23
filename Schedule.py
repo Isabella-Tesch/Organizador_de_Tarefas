@@ -24,8 +24,6 @@ class MainWindow(QMainWindow):
 
         menubar.setObjectName('ItemMenuArquivo')
 
-        self.applyStylesheet(menubar, "Organizador_de_Tarefas/StyleSchedule.css")
-
         self.calendar = QCalendarWidget(self)
 
         self.calendar.setGeometry(10, 50, 200, 200)
@@ -93,7 +91,6 @@ class MainWindow(QMainWindow):
         NameMonth = self.getNameMonth(Month)
 
         self.label.setObjectName('k')
-        self.applyStylesheet(self.label, 'Organizador_de_Tarefas\StyleSchedule.css')
         
         previous_dates = [SelectDate.addDays(-i) for i in range(3, 0, -1)]
 
